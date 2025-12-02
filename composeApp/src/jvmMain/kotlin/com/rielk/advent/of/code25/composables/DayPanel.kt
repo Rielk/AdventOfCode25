@@ -3,13 +3,17 @@ package com.rielk.advent.of.code25.composables
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -41,13 +45,16 @@ fun DayPanel(
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(8.dp)
         )
-        HorizontalDivider(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
+        HorizontalDivider()
         if (viewModel == null) {
             Text("Not implemented")
         } else {
             val state by viewModel.state.collectAsState()
-            SelectionContainer {
-                Text("Result: ${state.result1}")
+            Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                PartDisplay(state.part1, Modifier.weight(1f))
+                VerticalDivider()
+                PartDisplay(state.part2, Modifier.weight(1f))
             }
         }
     }

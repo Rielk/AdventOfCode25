@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
-abstract class DayXViewModel: ViewModel() {
+abstract class DayXViewModel : ViewModel() {
     private val part1Result = MutableStateFlow<String?>(null)
     private val part1Progress = MutableStateFlow(0)
     private val part1ProgressMax = MutableStateFlow(100)
@@ -17,18 +17,22 @@ abstract class DayXViewModel: ViewModel() {
     private val part2ProgressMax = MutableStateFlow(100)
 
     val state = combine(
-        combine(part1Result, part1Progress, part1ProgressMax, ::Triple),
-        combine(part2Result, part2Progress, part2ProgressMax, ::Triple)
-    ) { (result1, progress1, max1), (result2, progress2, max2) ->
-        UiState(result1, progress1, max1, result2, progress2, max2)
+        combine(part1Result, part1Progress, part1ProgressMax, ::PartState),
+        combine(part2Result, part2Progress, part2ProgressMax, ::PartState)
+    ) { part1, part2 ->
+        UiState(part1, part2)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), UiState())
 
     data class UiState(
-        val result1: String? = null,
-        val progress1: Int = 0,
-        val max1: Int = 100,
-        val result2: String? = null,
-        val progress2: Int = 0,
-        val max2: Int = 100
+        val part1: PartState = PartState(),
+        val part2: PartState = PartState()
     )
+
+    data class PartState(
+        val result: String? = null,
+        val progress: Int = 0,
+        val progressMax: Int = 1
+    ) {
+        val loading: Boolean get() = result == null
+    }
 }
