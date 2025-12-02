@@ -1,6 +1,5 @@
 package com.rielk.advent.of.code25
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -8,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.ui.window.Window
+import com.rielk.advent.of.code25.composables.DayWindowContent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -53,9 +53,7 @@ class WindowStateManager {
             title = state.day.toDisplayString(),
             alwaysOnTop = requireOnTop
         ) {
-            MaterialTheme {
-                DayWindowContent(day)
-            }
+            DayWindowContent(day)
         }
     }
 

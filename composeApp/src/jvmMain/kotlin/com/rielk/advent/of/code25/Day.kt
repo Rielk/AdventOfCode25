@@ -1,7 +1,8 @@
 package com.rielk.advent.of.code25
 
-import com.rielk.advent.of.code25.day1.Day1
-import com.rielk.advent.of.code25.shared.DayX
+import com.rielk.advent.of.code25.day1.Day1ViewModel
+import com.rielk.advent.of.code25.shared.DayXViewModel
+import kotlin.reflect.KClass
 
 enum class Day {
     Day1,
@@ -35,7 +36,7 @@ enum class Day {
     }
 }
 
-fun Day.getImplementation() : DayX = when(this) {
-    Day.Day1 -> Day1
+fun Day.getViewModelClass() : KClass<out DayXViewModel> = when(this) {
+    Day.Day1 -> Day1ViewModel::class
     else -> TODO()
 }

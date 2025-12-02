@@ -1,4 +1,4 @@
-package com.rielk.advent.of.code25
+package com.rielk.advent.of.code25.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.rielk.advent.of.code25.composables.Grid
+import com.rielk.advent.of.code25.Day
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
