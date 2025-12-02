@@ -33,3 +33,5 @@ plugins {
 }
 
 include(":composeApp")
+include(":day1")
+include(":shared")
