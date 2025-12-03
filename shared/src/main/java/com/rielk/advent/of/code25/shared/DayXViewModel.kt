@@ -59,34 +59,39 @@ abstract class DayXViewModel : ViewModel() {
     suspend fun processPart1(input: String?) = withContext(Dispatchers.Default) {
         if (input == null) return@withContext part1Exception.update { Exception("No input") }
 
-        val result = processPart(
-            input = input,
-            setProgress = { value -> part1Progress.update { value } },
-            setMaxProgress = { value -> part1ProgressMax.update { value } },
-            setException = { value -> part1Exception.update { value } },
-            addToLog = {value -> part1Log.update { it + value } }
-        )
-        part1Result.update { result }
+        try {
+            val result = processPart(
+                input = input,
+                setProgress = { value -> part1Progress.update { value } },
+                setMaxProgress = { value -> part1ProgressMax.update { value } },
+                addToLog = { value -> part1Log.update { it + value } }
+            )
+            part1Result.update { result }
+        } catch (e: Exception) {
+            part1Exception.update { e }
+        }
     }
 
     suspend fun processPart2(input: String?) = withContext(Dispatchers.Default) {
         if (input == null) return@withContext part2Exception.update { Exception("No input") }
 
-        val result = processPart(
-            input = input,
-            setProgress = { value -> part2Progress.update { value } },
-            setMaxProgress = { value -> part2ProgressMax.update { value } },
-            setException = { value -> part2Exception.update { value } },
-            addToLog = {value -> part2Log.update { it + value } }
-        )
-        part2Result.update { result }
+        try {
+            val result = processPart(
+                input = input,
+                setProgress = { value -> part2Progress.update { value } },
+                setMaxProgress = { value -> part2ProgressMax.update { value } },
+                addToLog = { value -> part2Log.update { it + value } }
+            )
+            part2Result.update { result }
+        } catch (e: Exception) {
+            part2Exception.update { e }
+        }
     }
 
     protected abstract suspend fun processPart(
         input: String,
         setProgress: (Int) -> Unit,
         setMaxProgress: (Int) -> Unit,
-        setException: (Exception) -> Unit,
         addToLog: (String) -> Unit
     ): String
 
