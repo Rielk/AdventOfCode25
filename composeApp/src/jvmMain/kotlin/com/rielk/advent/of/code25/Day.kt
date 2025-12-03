@@ -34,9 +34,9 @@ enum class Day {
     fun toDisplayString() : String {
         return StringBuilder().append(name.take(3)).append(" ").append(name.substring(3)).toString()
     }
-}
 
-fun Day.getViewModelClass() : KClass<out DayXViewModel> = when(this) {
-    Day.Day1 -> Day1ViewModel::class
-    else -> TODO()
+    fun getViewModelClass() : KClass<out DayXViewModel> = when(this) {
+        Day1 -> Day1ViewModel::class
+        else -> TODO()
+    }
 }

@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -22,7 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rielk.advent.of.code25.Day
+import com.rielk.advent.of.code25.Part
 import com.rielk.advent.of.code25.shared.DayXViewModel
+import com.rielk.advent.of.code25.utils.Input
 import kotlin.reflect.KClass
 
 @Composable
@@ -32,6 +35,15 @@ fun DayPanel(
     modifier: Modifier = Modifier,
     viewModel: DayXViewModel? = viewModelClass?.run { viewModel(viewModelClass) }
 ) {
+    LaunchedEffect(viewModel) {
+        val input1 = Input.loadForDay(day, Part.Part1)
+        viewModel?.processPart1(input1)
+    }
+    LaunchedEffect(viewModel) {
+        val input2 = Input.loadForDay(day, Part.Part2)
+        viewModel?.processPart2(input2)
+    }
+
     Column(
         modifier = modifier
             .background(MaterialTheme.colorScheme.primaryContainer)

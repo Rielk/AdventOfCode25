@@ -1,12 +1,31 @@
 package com.rielk.advent.of.code25.composables
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.min
 import com.rielk.advent.of.code25.shared.DayXViewModel
 
 @Composable
@@ -14,9 +33,59 @@ fun PartDisplay(
     partState: DayXViewModel.PartState,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.padding(16.dp, 8.dp)) {
-        SelectionContainer {
-            Text("Result: ${partState.result}")
+    val logTextScrollState = rememberLazyListState()
+    val logNumberScrollState = rememberLazyListState()
+    LaunchedEffect(logTextScrollState.firstVisibleItemIndex, logTextScrollState.firstVisibleItemScrollOffset) {
+        logNumberScrollState.scrollToItem(logTextScrollState.firstVisibleItemIndex, logTextScrollState.firstVisibleItemScrollOffset)
+    }
+    LaunchedEffect(logNumberScrollState.firstVisibleItemIndex, logNumberScrollState.firstVisibleItemScrollOffset) {
+        logTextScrollState.scrollToItem(logNumberScrollState.firstVisibleItemIndex, logNumberScrollState.firstVisibleItemScrollOffset)
+    }
+
+    Column(modifier = modifier.padding(top = 16.dp).padding(vertical = 8.dp)) {
+        when (partState) {
+            is DayXViewModel.PartState.Error -> {
+                Text(
+                    "Error: ${partState.exception.message}",
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+
+            is DayXViewModel.PartState.Loading -> {
+                Spacer(modifier = Modifier.height(12.dp))
+                LinearProgressIndicator(
+                    progress = { partState.progress.toFloat() / partState.progressMax.toFloat() },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            is DayXViewModel.PartState.Result -> {
+                SelectionContainer {
+                    Text("Result: ${partState.result}")
+                }
+            }
+        }
+
+        HorizontalDivider()
+        Row {
+            LazyColumn(
+                horizontalAlignment = Alignment.End,
+                state = logNumberScrollState,
+                modifier = Modifier.fillMaxHeight().padding(top = 8.dp, start = 4.dp).widthIn(min =16.dp)
+            ) {
+                items(partState.log.size) {
+                    Text(it.toString())
+                }
+            }
+            VerticalDivider(modifier = Modifier.fillMaxHeight().padding(horizontal = 4.dp))
+            LazyColumn(
+                state = logTextScrollState,
+                modifier = Modifier.fillMaxSize().padding(top = 8.dp, start = 4.dp)
+            ) {
+                items(partState.log) {
+                    Text(it)
+                }
+            }
         }
     }
 }
