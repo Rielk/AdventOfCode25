@@ -2,7 +2,7 @@ package com.rielk.advent.of.code25.utils
 
 import adventofcode25.composeapp.generated.resources.Res
 import com.rielk.advent.of.code25.Day
-import com.rielk.advent.of.code25.Part
+import com.rielk.advent.of.code25.shared.Part
 import org.jetbrains.compose.resources.MissingResourceException
 
 object Input {
