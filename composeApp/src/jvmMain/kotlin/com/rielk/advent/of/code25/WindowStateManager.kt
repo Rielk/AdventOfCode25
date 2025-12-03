@@ -6,12 +6,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPlacement
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.rememberWindowState
 import com.rielk.advent.of.code25.composables.DayWindowContent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlin.collections.plusAssign
 
 class WindowStateManager {
     private val stateMap = mutableStateMapOf<Day, DayWindowState>()
@@ -49,6 +52,10 @@ class WindowStateManager {
             state.clearBringToTop()
         }
         Window(
+            state = rememberWindowState(
+                position = WindowPosition.Aligned(alignment = Alignment.Center),
+                placement = WindowPlacement.Maximized
+            ),
             onCloseRequest = state::close,
             title = state.day.toDisplayString(),
             alwaysOnTop = requireOnTop
