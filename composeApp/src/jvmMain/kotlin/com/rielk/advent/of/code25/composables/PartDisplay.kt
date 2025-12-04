@@ -37,7 +37,7 @@ fun PartDisplay(
     viewModel: DayXPartXViewModel? = viewModelClass?.run { viewModel(viewModelClass) }
 ) {
     if (viewModel == null) {
-        Text("Not implemented")
+        Text("Not implemented", modifier = modifier)
     } else {
         LaunchedEffect(viewModel) {
             val input = Input.loadForDay(viewModel.inputRequest)
