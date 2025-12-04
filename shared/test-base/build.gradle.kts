@@ -12,7 +12,9 @@ kotlin {
     }
 }
 dependencies {
+    implementation(project(":shared"))
     implementation(libs.androidx.lifecycle.viewmodelCompose)
+    implementation(libs.junit.junit)
     testImplementation(libs.kotlin.test)
     testImplementation(libs.kotlin.testJunit)
     testImplementation(libs.junit)

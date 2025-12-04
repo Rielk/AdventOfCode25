@@ -10,12 +10,12 @@ fun DayWindowContent(
     day: Day,
     modifier: Modifier = Modifier
 ) {
-    val viewModelClass = remember(day) {
+    val viewModelClasses = remember(day) {
         try {
-            day.getViewModelClass()
+            day.getViewModelClasses()
         } catch (_: NotImplementedError) {
             null
         }
     }
-    DayPanel(day, viewModelClass, modifier)
+    DayPanel(day, viewModelClasses, modifier)
 }

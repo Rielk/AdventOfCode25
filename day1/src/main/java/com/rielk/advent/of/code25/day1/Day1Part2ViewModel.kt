@@ -1,15 +1,15 @@
 package com.rielk.advent.of.code25.day1
 
-import com.rielk.advent.of.code25.shared.DayXViewModel
+import com.rielk.advent.of.code25.shared.DayXPartXViewModel
 import java.io.StringReader
 
-class Day1ViewModel : DayXViewModel() {
-    override suspend fun processPart(
-        input: String,
-        setProgress: (Int) -> Unit,
-        setMaxProgress: (Int) -> Unit,
-        addToLog: (String) -> Unit
-    ): String {
+class Day1Part2ViewModel : DayXPartXViewModel() {
+    override val day: Int
+        get() = 1
+    override val fileName: String
+        get() = "input"
+
+    override suspend fun processPartImpl(input: String): String {
         val commandStrings = StringReader(input).use {
             it.readLines()
         }
