@@ -9,7 +9,7 @@ import org.junit.Assert
 import org.junit.Test
 import kotlin.reflect.KClass
 
-abstract class DayXPartXTestBase {
+abstract class DayXPartXTest {
     abstract val viewModel: DayXPartXViewModel
 
     private suspend fun DayXPartXViewModel.assertResult(expected: String) {
@@ -24,8 +24,12 @@ abstract class DayXPartXTestBase {
 
         val result = (state as DayXPartXViewModel.PartState.Result).result
         Assert.assertEquals(
-            StringBuilder().appendLine("Expected: $expected. Got: $result").append(state.log)
-                .toString(),
+            StringBuilder().apply {
+                appendLine("Expected: $expected. Got: $result")
+                state.log.forEach {
+                    appendLine(it)
+                }
+            }.toString(),
             expected,
             result
         )
@@ -52,6 +56,9 @@ abstract class DayXPartXTestBase {
     protected fun testForResult(input: String?, expected: String) = runBlocking {
         viewModel.processInput(input)
         viewModel.assertResult(expected)
+        viewModel.state.first().log.forEach {
+            println(it)
+        }
     }
 
     @Test
