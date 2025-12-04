@@ -2,6 +2,8 @@ package com.rielk.advent.of.code25
 
 import com.rielk.advent.of.code25.day1.Day1Part1ViewModel
 import com.rielk.advent.of.code25.day1.Day1Part2ViewModel
+import com.rielk.advent.of.code25.day2.Day2Part1ViewModel
+import com.rielk.advent.of.code25.day2.Day2Part2ViewModel
 import com.rielk.advent.of.code25.shared.DayXPartXViewModel
 import kotlin.reflect.KClass
 
@@ -38,6 +40,7 @@ enum class Day {
 
     fun getViewModelClasses() : Map<Part, KClass<out DayXPartXViewModel>?> = when(this) {
         Day1 -> mapOf(Part.Part1 to Day1Part1ViewModel::class, Part.Part2 to Day1Part2ViewModel::class)
+        Day2 -> mapOf(Part.Part1 to Day2Part1ViewModel::class, Part.Part2 to null)
         else -> TODO()
     }
 }

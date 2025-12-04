@@ -23,6 +23,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(project(":shared"))
             implementation(project(":day1"))
+            implementation(project(":day2"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

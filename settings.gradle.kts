@@ -34,7 +34,8 @@ plugins {
 }
 
 include(":composeApp")
-include(":day1")
 include(":shared")
 include(":shared:test-base")
 include(":dayTemplate")
+include(":day1")
+include(":day2")
