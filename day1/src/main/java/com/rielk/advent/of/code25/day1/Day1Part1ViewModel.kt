@@ -21,7 +21,6 @@ class Day1Part1ViewModel : DayXPartXViewModel() {
             position = command.doForStart(position)
             if (position == 0)
                 count ++
-            addToLog(position.toString())
             setProgress(index)
         }
         return count.toString()

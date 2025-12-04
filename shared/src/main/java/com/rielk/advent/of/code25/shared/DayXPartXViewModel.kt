@@ -50,7 +50,9 @@ abstract class DayXPartXViewModel : ViewModel() {
         if (input == null) return@withContext exception.update { NoInputException(inputRequest) }
 
         try {
+            addToLog("Starting...")
             val resultValue = processPartImpl(input = input)
+            addToLog("Done!")
             result.update { resultValue }
         } catch (e: Exception) {
             exception.update { e }
