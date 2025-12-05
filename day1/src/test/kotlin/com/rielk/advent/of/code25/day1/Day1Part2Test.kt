@@ -6,5 +6,5 @@ class Day1Part2Test: Day1PartXTest() {
     override val viewModel = Day1Part2ViewModel()
 
     @Test
-    fun part2_test1() = testForResult(WEBSITE_INPUT, 6)
+    fun test1() = testForResult(WEBSITE_INPUT, 6)
 }

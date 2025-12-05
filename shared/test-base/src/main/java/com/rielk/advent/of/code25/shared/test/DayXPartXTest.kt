@@ -51,6 +51,7 @@ abstract class DayXPartXTest {
         viewModel.assertFail(exceptionType)
     }
 
+    protected fun testForResult(input: String?, expected: Long)= testForResult(input, expected.toString())
     protected fun testForResult(input: String?, expected: Int)= testForResult(input, expected.toString())
 
     protected fun testForResult(input: String?, expected: String) = runBlocking {

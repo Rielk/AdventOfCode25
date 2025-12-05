@@ -59,6 +59,10 @@ abstract class DayXPartXViewModel : ViewModel() {
         }
     }
 
+    protected fun incrementProgress() {
+        this.progress.update { it + 1 }
+    }
+
     protected fun setProgress(progress: Int) {
         this.progress.update { progress }
     }
