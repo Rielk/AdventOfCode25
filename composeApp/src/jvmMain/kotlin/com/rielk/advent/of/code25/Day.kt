@@ -40,7 +40,7 @@ enum class Day {
 
     fun getViewModelClasses() : Map<Part, KClass<out DayXPartXViewModel>?> = when(this) {
         Day1 -> mapOf(Part.Part1 to Day1Part1ViewModel::class, Part.Part2 to Day1Part2ViewModel::class)
-        Day2 -> mapOf(Part.Part1 to Day2Part1ViewModel::class, Part.Part2 to null)
+        Day2 -> mapOf(Part.Part1 to Day2Part1ViewModel::class, Part.Part2 to Day2Part2ViewModel::class)
         else -> TODO()
     }
 }

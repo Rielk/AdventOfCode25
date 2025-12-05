@@ -1,21 +1,19 @@
 package com.rielk.advent.of.code25.day2
 
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
+import kotlin.math.abs
+import kotlin.math.floor
+import kotlin.math.log10
+import kotlin.math.pow
 
 class Day2Part1ViewModel : Day2PartXViewModel() {
-    override suspend fun processPartImpl(input: String): String {
-        val ranges = input.parseInput()
-        setMaxProgress(ranges.map { it.last - it.first }.sum().toInt())
-        val jobs = ranges.map { range ->
-                viewModelScope.async(Dispatchers.Default) {
-                    range.fold(0L) { acc, i ->
-                        (if (i.isInvalidId()) acc + i else acc).also { incrementProgress() }
-                    }
-                }
-            }.toList()
-        return jobs.awaitAll().sum().toString()
+
+    override fun Long.isInvalidId() : Boolean {
+        if (this == 0L) return false
+
+        val magnitude = floor( log10(abs(toDouble()))).toInt() + 1
+        if (magnitude % 2 != 0) return false
+        val div = 10.0.pow((magnitude) / 2).toLong()
+
+        return this / div == this % div
     }
 }
