@@ -29,7 +29,7 @@ fun DayLauncher(openWindow: (Day) -> Unit) {
         Grid(
             items = Day.entries,
             modifier = Modifier.fillMaxWidth().padding(8.dp),
-            columns = 5
+            columns = 3
         ) { day ->
             Button(onClick = { openWindow(day) }) {
                 Text(day.toDisplayString())

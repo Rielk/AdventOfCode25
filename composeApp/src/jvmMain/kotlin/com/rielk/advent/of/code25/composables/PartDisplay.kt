@@ -80,13 +80,13 @@ fun PartDisplay(
                     Spacer(modifier = Modifier.height(12.dp))
                     LinearProgressIndicator(
                         progress = { state.progress.toFloat() / state.progressMax.toFloat() },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
                     )
                 }
 
                 is DayXPartXViewModel.PartState.Result -> {
                     SelectionContainer {
-                        Text("Result: ${state.result}")
+                        Text("Result: ${state.result}", modifier = Modifier.padding(start = 8.dp))
                     }
                 }
             }

@@ -19,20 +19,7 @@ enum class Day {
     Day9,
     Day10,
     Day11,
-    Day12,
-    Day13,
-    Day14,
-    Day15,
-    Day16,
-    Day17,
-    Day18,
-    Day19,
-    Day20,
-    Day21,
-    Day22,
-    Day23,
-    Day24,
-    Day25;
+    Day12;
 
     fun toDisplayString() : String {
         return StringBuilder().append(name.take(3)).append(" ").append(name.substring(3)).toString()
