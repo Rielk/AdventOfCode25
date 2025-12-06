@@ -17,7 +17,7 @@ abstract class DayXPartXViewModel : ViewModel() {
     protected abstract val day: Int
     protected abstract val fileName: String
     val inputRequest: String
-        get() = "day$day/$fileName.txt"
+        get() = "day${day.toString().padStart(2, '0')}/$fileName.txt"
 
     private val result = MutableStateFlow<String?>(null)
     private val progress = MutableStateFlow(0)

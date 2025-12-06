@@ -1,23 +1,23 @@
 package com.rielk.advent.of.code25
 
-import com.rielk.advent.of.code25.day1.Day1Part1ViewModel
-import com.rielk.advent.of.code25.day1.Day1Part2ViewModel
-import com.rielk.advent.of.code25.day2.Day2Part1ViewModel
-import com.rielk.advent.of.code25.day2.Day2Part2ViewModel
-import com.rielk.advent.of.code25.day3.Day3Part1ViewModel
-import com.rielk.advent.of.code25.day3.Day3Part2ViewModel
-import com.rielk.advent.of.code25.day4.Day4Part1ViewModel
-import com.rielk.advent.of.code25.day4.Day4Part2ViewModel
-import com.rielk.advent.of.code25.day5.Day5Part1ViewModel
-import com.rielk.advent.of.code25.day5.Day5Part2ViewModel
-import com.rielk.advent.of.code25.day6.Day6Part1ViewModel
-import com.rielk.advent.of.code25.day6.Day6Part2ViewModel
-import com.rielk.advent.of.code25.day7.Day7Part1ViewModel
-import com.rielk.advent.of.code25.day7.Day7Part2ViewModel
-import com.rielk.advent.of.code25.day8.Day8Part1ViewModel
-import com.rielk.advent.of.code25.day8.Day8Part2ViewModel
-import com.rielk.advent.of.code25.day9.Day9Part1ViewModel
-import com.rielk.advent.of.code25.day9.Day9Part2ViewModel
+import com.rielk.advent.of.code25.day01.Day01Part1ViewModel
+import com.rielk.advent.of.code25.day01.Day01Part2ViewModel
+import com.rielk.advent.of.code25.day02.Day02Part1ViewModel
+import com.rielk.advent.of.code25.day02.Day02Part2ViewModel
+import com.rielk.advent.of.code25.day03.Day03Part1ViewModel
+import com.rielk.advent.of.code25.day03.Day03Part2ViewModel
+import com.rielk.advent.of.code25.day04.Day04Part1ViewModel
+import com.rielk.advent.of.code25.day04.Day04Part2ViewModel
+import com.rielk.advent.of.code25.day05.Day05Part1ViewModel
+import com.rielk.advent.of.code25.day05.Day05Part2ViewModel
+import com.rielk.advent.of.code25.day06.Day06Part1ViewModel
+import com.rielk.advent.of.code25.day06.Day06Part2ViewModel
+import com.rielk.advent.of.code25.day07.Day07Part1ViewModel
+import com.rielk.advent.of.code25.day07.Day07Part2ViewModel
+import com.rielk.advent.of.code25.day08.Day08Part1ViewModel
+import com.rielk.advent.of.code25.day08.Day08Part2ViewModel
+import com.rielk.advent.of.code25.day09.Day09Part1ViewModel
+import com.rielk.advent.of.code25.day09.Day09Part2ViewModel
 import com.rielk.advent.of.code25.day10.Day10Part1ViewModel
 import com.rielk.advent.of.code25.day10.Day10Part2ViewModel
 import com.rielk.advent.of.code25.day11.Day11Part1ViewModel
@@ -28,15 +28,15 @@ import com.rielk.advent.of.code25.shared.DayXPartXViewModel
 import kotlin.reflect.KClass
 
 enum class Day {
-    Day1,
-    Day2,
-    Day3,
-    Day4,
-    Day5,
-    Day6,
-    Day7,
-    Day8,
-    Day9,
+    Day01,
+    Day02,
+    Day03,
+    Day04,
+    Day05,
+    Day06,
+    Day07,
+    Day08,
+    Day09,
     Day10,
     Day11,
     Day12;
@@ -46,15 +46,15 @@ enum class Day {
     }
 
     fun getViewModelClasses() : Map<Part, KClass<out DayXPartXViewModel>?> = when(this) {
-        Day1 -> mapOf(Part.Part1 to Day1Part1ViewModel::class, Part.Part2 to Day1Part2ViewModel::class)
-        Day2 -> mapOf(Part.Part1 to Day2Part1ViewModel::class, Part.Part2 to Day2Part2ViewModel::class)
-        Day3 -> mapOf(Part.Part1 to Day3Part1ViewModel::class, Part.Part2 to Day3Part2ViewModel::class)
-        Day4 -> mapOf(Part.Part1 to Day4Part1ViewModel::class, Part.Part2 to Day4Part2ViewModel::class)
-        Day5 -> mapOf(Part.Part1 to Day5Part1ViewModel::class, Part.Part2 to Day5Part2ViewModel::class)
-        Day6 -> mapOf(Part.Part1 to Day6Part1ViewModel::class, Part.Part2 to Day6Part2ViewModel::class)
-        Day7 -> mapOf(Part.Part1 to Day7Part1ViewModel::class, Part.Part2 to Day7Part2ViewModel::class)
-        Day8 -> mapOf(Part.Part1 to Day8Part1ViewModel::class, Part.Part2 to Day8Part2ViewModel::class)
-        Day9 -> mapOf(Part.Part1 to Day9Part1ViewModel::class, Part.Part2 to Day9Part2ViewModel::class)
+        Day01 -> mapOf(Part.Part1 to Day01Part1ViewModel::class, Part.Part2 to Day01Part2ViewModel::class)
+        Day02 -> mapOf(Part.Part1 to Day02Part1ViewModel::class, Part.Part2 to Day02Part2ViewModel::class)
+        Day03 -> mapOf(Part.Part1 to Day03Part1ViewModel::class, Part.Part2 to Day03Part2ViewModel::class)
+        Day04 -> mapOf(Part.Part1 to Day04Part1ViewModel::class, Part.Part2 to Day04Part2ViewModel::class)
+        Day05 -> mapOf(Part.Part1 to Day05Part1ViewModel::class, Part.Part2 to Day05Part2ViewModel::class)
+        Day06 -> mapOf(Part.Part1 to Day06Part1ViewModel::class, Part.Part2 to Day06Part2ViewModel::class)
+        Day07 -> mapOf(Part.Part1 to Day07Part1ViewModel::class, Part.Part2 to Day07Part2ViewModel::class)
+        Day08 -> mapOf(Part.Part1 to Day08Part1ViewModel::class, Part.Part2 to Day08Part2ViewModel::class)
+        Day09 -> mapOf(Part.Part1 to Day09Part1ViewModel::class, Part.Part2 to Day09Part2ViewModel::class)
         Day10 -> mapOf(Part.Part1 to Day10Part1ViewModel::class, Part.Part2 to Day10Part2ViewModel::class)
         Day11 -> mapOf(Part.Part1 to Day11Part1ViewModel::class, Part.Part2 to Day11Part2ViewModel::class)
         Day12 -> mapOf(Part.Part1 to Day12Part1ViewModel::class, Part.Part2 to Day12Part2ViewModel::class)

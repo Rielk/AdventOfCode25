@@ -40,17 +40,21 @@ fun PartDisplay(
     viewModel: DayXPartXViewModel? = viewModelClass?.run { viewModel(viewModelClass) }
 ) {
     var todo by remember { mutableStateOf(false) }
-    if (viewModel == null || todo) {
-        Text("Not implemented", modifier = modifier)
-    } else {
-        LaunchedEffect(viewModel) {
-            val input = Input.loadForDay(viewModel.inputRequest)
+
+    LaunchedEffect(viewModel) {
+        viewModel?.apply {
+            val input = Input.loadForDay(inputRequest)
             try {
-                viewModel.processInput(input)
+                processInput(input)
             } catch (_: NotImplementedError) {
                 todo = true
             }
         }
+    }
+
+    if (viewModel == null || todo) {
+        Text("Not implemented", modifier = modifier)
+    } else {
         val state by viewModel.state.collectAsState()
 
 
