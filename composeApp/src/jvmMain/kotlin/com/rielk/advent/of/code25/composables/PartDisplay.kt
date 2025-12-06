@@ -53,7 +53,7 @@ fun PartDisplay(
     }
 
     if (viewModel == null || todo) {
-        Text("Not implemented", modifier = modifier)
+        Text("Not implemented", modifier = modifier.padding(start = 8.dp))
     } else {
         val state by viewModel.state.collectAsState()
 
