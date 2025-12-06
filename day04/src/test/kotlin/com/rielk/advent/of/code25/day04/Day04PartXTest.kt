@@ -4,6 +4,7 @@ import com.rielk.advent.of.code25.shared.test.DayXPartXTest
 
 abstract class Day04PartXTest: DayXPartXTest() {
     companion object {
-        protected const val WEBSITE_INPUT: String = ""
+        protected const val WEBSITE_INPUT: String =
+            "..@@.@@@@.\n@@@.@.@.@@\n@@@@@.@.@@\n@.@@@@..@.\n@@.@@@@.@@\n.@@@@@@@.@\n.@.@.@.@@@\n@.@@@.@@@@\n.@@@@@@@@.\n@.@.@@@.@."
     }
 }
