@@ -71,7 +71,7 @@ abstract class DayXPartXViewModel : ViewModel() {
         this.progressMax.update { maxProgress }
     }
 
-    protected fun addToLog(value: String) {
+    protected fun addToLog(vararg value: String) {
         this.log.update { it + value }
     }
 
