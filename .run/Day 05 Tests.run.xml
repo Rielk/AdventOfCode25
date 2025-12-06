@@ -11,8 +11,6 @@
       <option name="taskNames">
         <list>
           <option value=":day05:test" />
-          <option value="--tests" />
-          <option value="&quot;day05.*&quot;" />
         </list>
       </option>
       <option name="vmOptions" />

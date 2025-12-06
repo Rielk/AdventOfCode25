@@ -11,8 +11,6 @@
       <option name="taskNames">
         <list>
           <option value=":day12:test" />
-          <option value="--tests" />
-          <option value="&quot;com.rielk.advent.of.code25.day12.*&quot;" />
         </list>
       </option>
       <option name="vmOptions" />
