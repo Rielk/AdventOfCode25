@@ -25,8 +25,8 @@ import kotlin.reflect.KClass
 @Composable
 fun DayPanel(
     day: Day,
-    viewModelClasses: Map<Part, KClass<out DayXPartXViewModel>?>?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModelClasses: Map<Part, KClass<out DayXPartXViewModel>?> = day.getViewModelClasses()
 ) {
     Column(
         modifier = modifier
@@ -43,14 +43,10 @@ fun DayPanel(
         )
         Spacer(modifier = Modifier.height(8.dp))
         HorizontalDivider()
-        if (viewModelClasses == null) {
-            Text("Not implemented")
-        } else {
-            Row(horizontalArrangement = Arrangement.SpaceBetween) {
-                PartDisplay(viewModelClasses[Part.Part1], Modifier.weight(1f))
-                VerticalDivider()
-                PartDisplay(viewModelClasses[Part.Part2], Modifier.weight(1f))
-            }
+        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+            PartDisplay(viewModelClasses[Part.Part1], Modifier.weight(1f))
+            VerticalDivider()
+            PartDisplay(viewModelClasses[Part.Part2], Modifier.weight(1f))
         }
     }
 }

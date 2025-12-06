@@ -24,6 +24,16 @@ kotlin {
             implementation(project(":shared"))
             implementation(project(":day1"))
             implementation(project(":day2"))
+            implementation(project(":day3"))
+            implementation(project(":day4"))
+            implementation(project(":day5"))
+            implementation(project(":day6"))
+            implementation(project(":day7"))
+            implementation(project(":day8"))
+            implementation(project(":day9"))
+            implementation(project(":day10"))
+            implementation(project(":day11"))
+            implementation(project(":day12"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

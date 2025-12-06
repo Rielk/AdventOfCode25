@@ -11,7 +11,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.rememberWindowState
-import com.rielk.advent.of.code25.composables.DayWindowContent
+import com.rielk.advent.of.code25.composables.DayPanel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -60,7 +60,7 @@ class WindowStateManager {
             title = state.day.toDisplayString(),
             alwaysOnTop = requireOnTop
         ) {
-            DayWindowContent(day)
+            DayPanel(day)
         }
     }
 

@@ -22,6 +22,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -36,12 +39,17 @@ fun PartDisplay(
     modifier: Modifier = Modifier,
     viewModel: DayXPartXViewModel? = viewModelClass?.run { viewModel(viewModelClass) }
 ) {
-    if (viewModel == null) {
+    var todo by remember { mutableStateOf(false) }
+    if (viewModel == null || todo) {
         Text("Not implemented", modifier = modifier)
     } else {
         LaunchedEffect(viewModel) {
             val input = Input.loadForDay(viewModel.inputRequest)
-            viewModel.processInput(input)
+            try {
+                viewModel.processInput(input)
+            } catch (_: NotImplementedError) {
+                todo = true
+            }
         }
         val state by viewModel.state.collectAsState()
 

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Day 1 " type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="Day 1 " type="GradleRunConfiguration" factoryName="Gradle" folderName="Day">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$/composeApp" />
