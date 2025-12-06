@@ -2,7 +2,7 @@ package com.rielk.advent.of.code25.day10
 
 class Day10Part1ViewModel : Day10PartXViewModel() {
 
-    override suspend fun processPartImpl(input: String): String {
+    override suspend fun processPartImpl(input: String): Any {
         TODO()
     }
 }

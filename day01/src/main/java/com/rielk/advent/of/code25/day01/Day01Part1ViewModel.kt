@@ -4,7 +4,7 @@ import java.io.StringReader
 
 class Day01Part1ViewModel : Day01PartXViewModel() {
 
-    override suspend fun processPartImpl(input: String): String {
+    override suspend fun processPartImpl(input: String): Any {
         val commandStrings = StringReader(input).use {
             it.readLines()
         }
@@ -18,6 +18,6 @@ class Day01Part1ViewModel : Day01PartXViewModel() {
                 count ++
             setProgress(index)
         }
-        return count.toString()
+        return count
     }
 }

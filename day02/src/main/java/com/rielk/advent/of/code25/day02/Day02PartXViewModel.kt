@@ -13,7 +13,7 @@ abstract class Day02PartXViewModel : DayXPartXViewModel() {
         get() = "input"
 
 
-    override suspend fun processPartImpl(input: String): String {
+    override suspend fun processPartImpl(input: String): Any {
         val ranges = input.parseInput()
         setMaxProgress(ranges.map { it.last - it.first }.sum().toInt())
         val jobs = ranges.map { range ->

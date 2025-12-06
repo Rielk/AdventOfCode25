@@ -7,7 +7,7 @@ import kotlinx.coroutines.awaitAll
 
 class Day03Part1ViewModel : Day03PartXViewModel() {
 
-    override suspend fun processPartImpl(input: String): String {
+    override suspend fun processPartImpl(input: String): Any {
         val banks = readInput(input)
         setMaxProgress(banks.size)
 

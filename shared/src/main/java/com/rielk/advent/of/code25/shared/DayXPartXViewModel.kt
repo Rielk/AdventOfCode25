@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 
 abstract class DayXPartXViewModel : ViewModel() {
-    protected abstract suspend fun processPartImpl(input: String): String
+    protected abstract suspend fun processPartImpl(input: String): Any
 
     protected abstract val day: Int
     protected abstract val fileName: String
@@ -53,7 +53,7 @@ abstract class DayXPartXViewModel : ViewModel() {
             addToLog("Starting...")
             val resultValue = processPartImpl(input = input)
             addToLog("Done!")
-            result.update { resultValue }
+            result.update { resultValue.toString() }
         } catch (e: Exception) {
             exception.update { e }
         }
