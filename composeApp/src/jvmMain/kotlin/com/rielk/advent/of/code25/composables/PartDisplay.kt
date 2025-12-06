@@ -84,7 +84,8 @@ fun PartDisplay(
                 is DayXPartXViewModel.PartState.Error -> {
                     Text(
                         "Error: ${state.exception.message}",
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(start = 8.dp)
                     )
                 }
 
