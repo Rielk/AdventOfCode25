@@ -45,7 +45,7 @@ abstract class Day03PartXViewModel : DayXPartXViewModel() {
         return StringReader(input).use {
             it.readLines().map { line ->
                 line.map {char ->
-                    char.toString().toInt()
+                    char.digitToInt()
                 }
             }
         }
