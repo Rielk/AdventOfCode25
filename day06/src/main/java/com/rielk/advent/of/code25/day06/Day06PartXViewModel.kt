@@ -9,31 +9,39 @@ abstract class Day06PartXViewModel : DayXPartXViewModel() {
     override val fileName: String
         get() = "input"
 
-    protected fun parseInput(input: String): List<Problem> {
+    override suspend fun processPartImpl(input: String): Any {
+        val problems = parseInput(input)
+        return problems.sumOf { it.solve() }
+    }
+
+    private fun parseInput(input: String): List<Problem> {
         StringReader(input).use { stringReader ->
             val lines = stringReader.readLines()
             val problems = lines.last().splitLine().map {
-                when(it) {
-                    "+" -> ProblemImpl.Sum()
-                    "*" -> ProblemImpl.Multiply()
+                when (it) {
+                    "+" -> Problem.Sum()
+                    "*" -> Problem.Multiply()
                     else -> throw IllegalArgumentException()
                 }
             }
-            lines.asSequence().take(lines.size -1).forEach { line ->
-                line.splitLine().withIndex().forEach { (i, numString) ->
-                    problems[i].addNumber(numString.toLong())
-                }
-            }
+
+            setMaxProgress(problems.size)
+            setProgress(-1)
+            addNumbersToProblems(problems, lines.asSequence().onEach { incrementProgress() }.take(lines.size - 1))
+            incrementProgress()
+
             return problems
         }
     }
 
+    protected abstract fun addNumbersToProblems(
+        problems: List<Problem>,
+        remainingLines: Sequence<String>
+    )
+
     protected fun String.splitLine() = trim().split(Regex("\\s+"))
 
-    protected interface Problem {
-        fun solve(): Long
-    }
-    private abstract class ProblemImpl() : Problem {
+    protected abstract class Problem() {
         protected abstract fun operate(a: Long, b: Long): Long
 
         private val numbers = mutableListOf<Long>()
@@ -42,15 +50,15 @@ abstract class Day06PartXViewModel : DayXPartXViewModel() {
             numbers.add(number)
         }
 
-        override fun solve() = numbers.reduce(::operate)
+        fun solve() = numbers.reduce(::operate)
 
-        class Sum : ProblemImpl() {
+        class Sum : Problem() {
             override fun operate(a: Long, b: Long): Long {
                 return a + b
             }
         }
 
-        class Multiply : ProblemImpl() {
+        class Multiply : Problem() {
             override fun operate(a: Long, b: Long): Long {
                 return a * b
             }
