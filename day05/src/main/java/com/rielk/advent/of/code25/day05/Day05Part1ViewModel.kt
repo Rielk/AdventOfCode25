@@ -9,4 +9,8 @@ class Day05Part1ViewModel : Day05PartXViewModel() {
             ranges.anyContain(it).also { incrementProgress() }
         }
     }
+
+    private fun List<LongRange>.anyContain(value: Long) : Boolean {
+        return any { value in it }
+    }
 }

@@ -24,9 +24,5 @@ abstract class Day05PartXViewModel : DayXPartXViewModel() {
         }
     }
 
-    protected fun List<LongRange>.anyContain(value: Long) : Boolean {
-        return any { value in it }
-    }
-
     protected data class RangesAndIds(val ranges: List<LongRange>, val ids: List<Long>)
 }
