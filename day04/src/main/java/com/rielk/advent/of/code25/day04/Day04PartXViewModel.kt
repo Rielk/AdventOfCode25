@@ -4,7 +4,7 @@ import com.rielk.advent.of.code25.shared.DayXPartXViewModel
 import java.io.StringReader
 import kotlin.collections.getOrNull
 
-typealias Layout = MutableList<MutableList<Boolean>>
+internal typealias Layout = MutableList<MutableList<Boolean>>
 
 abstract class Day04PartXViewModel : DayXPartXViewModel() {
     override val day: Int
